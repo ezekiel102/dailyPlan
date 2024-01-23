@@ -13,6 +13,10 @@ private var dateToday = Date()
 
 class ViewController: UIViewController, UITableViewDelegate {
     
+    weak var delegate: ViewControllerDelegate?
+    
+    var numb: Int = 0
+    
     // MARK: - Private properties
     
     private var addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
@@ -23,11 +27,14 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     private var items: [HourInterval] = Date().dayHours(from: dateToday)
     
+    // MARK: - View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
     }
 }
+
 // MARK: - Private methods
 
 private extension ViewController {
@@ -43,7 +50,7 @@ private extension ViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        tableView.rowHeight = 400
+        tableView.rowHeight = 150
     }
     
     func makeLeftBarButtonItems() -> [UIBarButtonItem] {
@@ -86,7 +93,8 @@ extension ViewController: TaskCellViewDelegate {
     func infoButtonPressed() {
         let storyboard = UIStoryboard(name: "InfoViewController", bundle: nil)
         let infoViewController = storyboard.instantiateViewController(withIdentifier: "InfoViewController")
+        print(3)
         self.present(infoViewController, animated: true , completion: nil)
-
+        
     }
 }

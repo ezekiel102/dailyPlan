@@ -9,11 +9,10 @@ import UIKit
 import Then
 
 
-protocol TaskCellViewDelegate: AnyObject {
-    func infoButtonPressed()
-}
 
 class TaskCellView: UITableViewCell, UITableViewDelegate {
+    
+    // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,6 +23,8 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public
+
     func configure(task: Tasks) {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -48,8 +49,8 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
     
     // MARK: - Public properties
 
-    var infoButton = UIButton(type: .detailDisclosure).then {
-        $0.tintColor = .black
+    var infoButton = UIButton(type: .detailDisclosure).then {_ in
+//        $0.tintColor = .black
     }
 
     weak var delegate: TaskCellViewDelegate?

@@ -29,6 +29,8 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     @IBOutlet weak var descriptionTaskField: UITextView!
     
+    // MARK: - View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionTaskField.text = "Описание задачи"
@@ -53,6 +55,8 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         }
     }
 
+    // MARK: - Public functions
+    
     @IBAction func didEndStartTask(_ sender: UIDatePicker) {
         startDateTask = startTaskPicker.date
     }

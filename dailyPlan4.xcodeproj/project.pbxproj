@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A36E6092B603C05001064B9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A36E6082B603C05001064B9 /* Protocols.swift */; };
 		0A5709502B5CF682003EB2BA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A57094F2B5CF682003EB2BA /* SnapKit */; };
 		0A5709582B5CFA8A003EB2BA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5709572B5CFA8A003EB2BA /* DateExtensions.swift */; };
 		0A57095C2B5D58D5003EB2BA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A57095B2B5D58D5003EB2BA /* Data.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A36E6082B603C05001064B9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		0A5709572B5CFA8A003EB2BA /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		0A57095B2B5D58D5003EB2BA /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		0A5709632B5D6C78003EB2BA /* AddingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddingViewController.storyboard; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				0A5709572B5CFA8A003EB2BA /* DateExtensions.swift */,
+				0A36E6082B603C05001064B9 /* Protocols.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				0AB0425E2B5CF34200E0D419 /* HourCellView.swift in Sources */,
 				0AB042272B5CEEEE00E0D419 /* AppDelegate.swift in Sources */,
 				0A57096E2B5EDDF9003EB2BA /* InfoViewController.swift in Sources */,
+				0A36E6092B603C05001064B9 /* Protocols.swift in Sources */,
 				0A5709582B5CFA8A003EB2BA /* DateExtensions.swift in Sources */,
 				0AB042292B5CEEEE00E0D419 /* SceneDelegate.swift in Sources */,
 				0A57095C2B5D58D5003EB2BA /* Data.swift in Sources */,

@@ -11,6 +11,9 @@ class InfoViewController: UIViewController {
 
     // MARK: - Public properties
 
+    
+    // MARK: - Public properties
+
     @IBOutlet weak var nameTaskLabel: UILabel!
     
     @IBOutlet weak var startDateLabel: UILabel!
@@ -19,7 +22,7 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var numb = 2
+    var task1 = Tasks(id: 1, dateStart: 1705937101, dateFinish: 1705938452, name: "privet", description: "smotri suda")
     
     var task: Tasks? {
         didSet {
@@ -32,10 +35,11 @@ class InfoViewController: UIViewController {
         }
     }
     
+    // MARK: - View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        numb = 3
-        
+        task = Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "poka", description: "smotri suda")
     }
     
 }

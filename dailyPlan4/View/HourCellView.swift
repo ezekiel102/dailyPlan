@@ -8,13 +8,13 @@
 import UIKit
 import Then
 
-protocol HourCellViewDelegate: AnyObject {
-    func infoButtonPressed()
-}
+
 
 class HourCellView: UITableViewCell, UITableViewDelegate {
     
     weak var delegate: TaskCellViewDelegate?
+    
+    // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,16 +25,8 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var items: [Tasks] = [
-        Tasks(id: 1, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 1", description: "opisanie 1"),
-        Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 2", description: "opisanie 2"),
-        Tasks(id: 3, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 3", description: "opisanie 3"),
-        Tasks(id: 4, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 4", description: "opisanie 4"),
-        Tasks(id: 5, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 5", description: "opisanie 5"),
-        Tasks(id: 6, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 6", description: "opisanie 6")
-    ]
-    
-    
+    // MARK: - Public
+
     func configure(data: HourInterval, number: Int) {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -55,7 +47,16 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
         $0.font = .systemFont(ofSize: 12)
         $0.textAlignment = .center
     }
-
+    
+    private var items: [Tasks] = [
+        Tasks(id: 1, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 1", description: "opisanie 1"),
+        Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 2", description: "opisanie 2"),
+        Tasks(id: 3, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 3", description: "opisanie 3"),
+        Tasks(id: 4, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 4", description: "opisanie 4"),
+        Tasks(id: 5, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 5", description: "opisanie 5"),
+        Tasks(id: 6, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 6", description: "opisanie 6")
+    ]
+    
     private var colour = UIColor.clear
  
     private var tableView = UITableView(frame: .zero)
@@ -117,6 +118,8 @@ extension HourCellView: UITableViewDataSource {
 
 extension HourCellView: TaskCellViewDelegate {
     func infoButtonPressed() {
+        print(2)
         delegate?.infoButtonPressed()
+        
     }
 }
