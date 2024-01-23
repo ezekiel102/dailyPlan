@@ -15,8 +15,6 @@ protocol TaskCellViewDelegate: AnyObject {
 
 class TaskCellView: UITableViewCell, UITableViewDelegate {
     
-    weak var delegate: TaskCellViewDelegate?
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
@@ -35,6 +33,8 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
         nameTask.text = "\(task.name)"
     }
     
+    // MARK: - Private properties
+    
     private let hours = UILabel().then {
         $0.font = .systemFont(ofSize: 12)
         $0.textAlignment = .center
@@ -46,15 +46,22 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
         $0.text = "coding"
     }
     
+    // MARK: - Public properties
+
     var infoButton = UIButton(type: .detailDisclosure).then {
         $0.tintColor = .black
     }
 
+    weak var delegate: TaskCellViewDelegate?
+    
+    
     @objc func infoButtonPressed() {
         delegate?.infoButtonPressed()
     }
     
 }
+
+// MARK: - Private methods
 
 private extension TaskCellView {
     func initialize() {

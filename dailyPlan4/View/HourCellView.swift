@@ -45,6 +45,8 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
         
     }
     
+    // MARK: - Private properties
+
     private let hour = UILabel().then {
         $0.font = .systemFont(ofSize: 12)
         $0.textAlignment = .center
@@ -58,8 +60,8 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
  
     private var tableView = UITableView(frame: .zero)
     
-
 }
+// MARK: - Private methods
 
 private extension HourCellView {
     func initialize() {
@@ -97,6 +99,7 @@ private extension HourCellView {
     }
 }
 
+// MARK: - Public methods
 
 extension HourCellView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

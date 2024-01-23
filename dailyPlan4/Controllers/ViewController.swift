@@ -13,9 +13,11 @@ private var dateToday = Date()
 
 class ViewController: UIViewController, UITableViewDelegate {
     
+    // MARK: - Private properties
+    
     private var addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     
-    let datePicker = UIDatePicker()
+    private let datePicker = UIDatePicker()
     
     private var tableView = UITableView()
     
@@ -23,6 +25,13 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialize()
+    }
+}
+// MARK: - Private methods
+
+private extension ViewController {
+    func initialize() {
         navigationItem.leftBarButtonItems = makeLeftBarButtonItems()
         navigationItem.setRightBarButtonItems([addBarButton], animated: true)
         addBarButton.target = self
@@ -55,8 +64,9 @@ class ViewController: UIViewController, UITableViewDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: "AddingViewController")
         self.present(vc, animated: true , completion: nil)
     }
-
 }
+
+// MARK: - Public methods
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

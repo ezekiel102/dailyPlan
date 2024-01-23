@@ -9,6 +9,8 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    // MARK: - Public properties
+
     @IBOutlet weak var nameTaskLabel: UILabel!
     
     @IBOutlet weak var startDateLabel: UILabel!

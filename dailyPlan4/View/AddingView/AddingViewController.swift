@@ -9,6 +9,8 @@ import UIKit
 
 class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
+    // MARK: - Private properties
+
     private var nameTask: String = String()
     
     private var startDateTask: Date = Date()
@@ -17,6 +19,8 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     private var descriptionTask: String = String()
     
+    // MARK: - Public properties
+
     @IBOutlet weak var nameTaskField: UITextField!
     
     @IBOutlet weak var startTaskPicker: UIDatePicker!
