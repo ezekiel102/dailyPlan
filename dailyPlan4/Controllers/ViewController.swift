@@ -11,7 +11,7 @@ import SnapKit
 
 private var dateToday = Date()
 
-class ViewController: UIViewController, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDelegate, ViewControllerDelegate {
     
     weak var delegate: ViewControllerDelegate?
     
@@ -71,6 +71,10 @@ private extension ViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "AddingViewController")
         self.present(vc, animated: true , completion: nil)
     }
+    
+    func taskDelegate() -> Tasks {
+        return Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "poka", description: "smotri suda")
+    }
 }
 
 // MARK: - Public methods
@@ -91,10 +95,17 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: TaskCellViewDelegate {
     func infoButtonPressed() {
-        let storyboard = UIStoryboard(name: "InfoViewController", bundle: nil)
-        let infoViewController = storyboard.instantiateViewController(withIdentifier: "InfoViewController")
+
+//        let storyboard = UIStoryboard(name: "InfoViewController", bundle: nil)
+//        var infoViewController = storyboard.instantiateViewController(withIdentifier: "InfoViewController")
+       let vc = InfoView()
+        vc.delegate = self
+        vc.task = Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "poka", description: "opisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanie")
+        self.present(vc, animated: true)
+//        vc.storyboard = UIStoryboard(name: "InfoViewController", bundle: nil)
         print(3)
-        self.present(infoViewController, animated: true , completion: nil)
+//        present(vc, animated: false)
+//        self.present(infoViewController, animated: true , completion: nil)
         
     }
 }
