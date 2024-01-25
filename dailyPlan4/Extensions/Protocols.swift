@@ -18,5 +18,4 @@ protocol HourCellViewDelegate: AnyObject {
 
 protocol ViewControllerDelegate: AnyObject {
     func infoButtonPressed()
-    
 }

@@ -73,7 +73,7 @@ private extension ViewController {
     }
     
     func taskDelegate() -> Tasks {
-        return Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "poka", description: "smotri suda")
+        return Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "name", description: "description")
     }
 }
 
@@ -95,17 +95,10 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: TaskCellViewDelegate {
     func infoButtonPressed() {
-
-//        let storyboard = UIStoryboard(name: "InfoViewController", bundle: nil)
-//        var infoViewController = storyboard.instantiateViewController(withIdentifier: "InfoViewController")
-       let vc = InfoView()
+        let vc = InfoView()
         vc.delegate = self
-        vc.task = Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "poka", description: "opisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanieopisanie")
+        vc.task = Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "name", description: "description")
         self.present(vc, animated: true)
-//        vc.storyboard = UIStoryboard(name: "InfoViewController", bundle: nil)
         print(3)
-//        present(vc, animated: false)
-//        self.present(infoViewController, animated: true , completion: nil)
-        
     }
 }

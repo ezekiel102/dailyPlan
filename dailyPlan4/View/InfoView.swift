@@ -60,6 +60,7 @@ class InfoView: UIViewController {
     private let descriptionLabel = UITextView().then {
         $0.font = .systemFont(ofSize: UIConstants.fontSize)
         $0.textAlignment = .left
+        $0.backgroundColor = .clear
     }
 }
 
@@ -67,12 +68,17 @@ class InfoView: UIViewController {
 
 private extension InfoView {
     func initialize() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
         view.addSubview(nameLabel)
         view.addSubview(startDateLabel)
         view.addSubview(finishDateLabel)
         view.addSubview(descriptionLabel)
         
-        view.backgroundColor = .white
+        //view.backgroundColor = .white
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(UIConstants.topInset)

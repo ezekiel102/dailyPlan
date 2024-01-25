@@ -92,10 +92,7 @@ private extension HourCellView {
         tableView.rowHeight = 40
     }
     @objc func infoButtonPressed2() {
-//        let storyboard = UIStoryboard(name: "InfoViewController", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "InfoViewController")
-//        vc.task = Tasks(id: 1, dateStart: 1705937101, dateFinish: 1705938452, name: "privet", description: "smotri suda")
-//        self.navigationController.present(vc, animated: true , completion: nil)
+
         print(2)
     }
 }
