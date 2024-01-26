@@ -8,9 +8,11 @@
 import UIKit
 
 class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-
+    
+    weak var delegate: ViewControllerDelegate?
+    
     // MARK: - Private properties
-
+    
     private var nameTask: String = String()
     
     private var startDateTask: Date = Date()
@@ -20,7 +22,7 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     private var descriptionTask: String = String()
     
     // MARK: - Public properties
-
+    
     @IBOutlet weak var nameTaskField: UITextField!
     
     @IBOutlet weak var startTaskPicker: UIDatePicker!
@@ -33,28 +35,23 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionTaskField.text = "Описание задачи"
-        descriptionTaskField.delegate = self
     }
     
     @IBAction func addTaskButtonPressed(_ sender: UIButton) {
         if let name = nameTaskField.text {
             nameTask = name
-            print(nameTask)
-            print(startDateTask)
-            print(finishDateTask)
             if descriptionTaskField.text == nil {
                 descriptionTask = ""
             } else {
                 descriptionTask = descriptionTaskField.text
             }
-            print(descriptionTask)
+            delegate?.addTask(nameTaskField.text!, startDate: startDateTask.currentTimestamp, finishDate: finishDateTask.currentTimestamp, descriptionTaskField.text!)
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true)
         }
     }
-
+    
     // MARK: - Public functions
     
     @IBAction func didEndStartTask(_ sender: UIDatePicker) {

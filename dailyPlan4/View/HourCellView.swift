@@ -14,6 +14,9 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
     
     weak var delegate: TaskCellViewDelegate?
     
+    weak var delegate2: ViewControllerDelegate?
+
+    
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,8 +36,6 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
         let startH = formatter.string(from: Date(timeIntervalSince1970: data.startHour))
         let endH = formatter.string(from: Date(timeIntervalSince1970: data.endHour + 1))
         hour.text = "\(startH) - \(endH)"
-        numberLabel.text = "\(number)"
-        
     }
     
     // MARK: - Private properties
@@ -43,23 +44,13 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
         $0.font = .systemFont(ofSize: 12)
         $0.textAlignment = .center
     }
-    private let numberLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 12)
-        $0.textAlignment = .center
-    }
+
     
-    private var items: [Tasks] = [
-        Tasks(id: 1, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 1", description: "opisanie 1"),
-        Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 2", description: "opisanie 2"),
-        Tasks(id: 3, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 3", description: "opisanie 3"),
-        Tasks(id: 4, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 4", description: "opisanie 4"),
-        Tasks(id: 5, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 5", description: "opisanie 5"),
-        Tasks(id: 6, dateStart: 1705937101, dateFinish: 1705938452, name: "zadacha 6", description: "opisanie 6")
-    ]
+    private var items = ViewController().tasks
     
     private var colour = UIColor.clear
  
-    private var tableView = UITableView(frame: .zero)
+    var tableView = UITableView(frame: .zero)
     
 }
 // MARK: - Private methods
@@ -67,16 +58,12 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
 private extension HourCellView {
     func initialize() {
         print("hourcellview init")
+        print(ViewController().tasks)
         contentView.backgroundColor = colour
         contentView.addSubview(hour)
         hour.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(3)
             make.leading.equalToSuperview().offset(10)
-        }
-        contentView.addSubview(numberLabel)
-        numberLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(3)
-            make.leading.equalTo(hour.snp.trailing).offset(10)
         }
         contentView.addSubview(tableView)
         tableView.dataSource = self
@@ -87,7 +74,6 @@ private extension HourCellView {
             make.trailing.equalToSuperview().inset(10)
             make.bottom.equalToSuperview()
             make.leading.equalTo(hour.snp.trailing)
-            
         }
         tableView.rowHeight = 40
     }

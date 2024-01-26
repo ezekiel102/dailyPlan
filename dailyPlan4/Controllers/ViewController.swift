@@ -13,9 +13,15 @@ private var dateToday = Date()
 
 class ViewController: UIViewController, UITableViewDelegate, ViewControllerDelegate {
     
-    weak var delegate: ViewControllerDelegate?
+    func addTask(_ name: String, startDate: TimeInterval, finishDate: TimeInterval, _ description: String) {
+        let task = Tasks(id: tasks.count + 1, dateStart: startDate, dateFinish: finishDate, name: name, description: description)
+        tasks.append(task)
+        print(tasks)
+    }
     
-    var numb: Int = 0
+    var tasks: [Tasks] = [Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "name", description: "description")]
+     
+    weak var delegate: ViewControllerDelegate?
     
     // MARK: - Private properties
     
@@ -68,12 +74,10 @@ private extension ViewController {
     
     @objc private func addButtonPressed() {
         let storyboard = UIStoryboard(name: "AddingViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddingViewController")
-        self.present(vc, animated: true , completion: nil)
-    }
-    
-    func taskDelegate() -> Tasks {
-        return Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "name", description: "description")
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddingViewController") as? AddingViewController
+        vc?.delegate = self
+        self.present(vc!, animated: true , completion: nil)
+        print(tasks)
     }
 }
 
@@ -97,7 +101,7 @@ extension ViewController: TaskCellViewDelegate {
     func infoButtonPressed() {
         let vc = InfoView()
         vc.delegate = self
-        vc.task = Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "name", description: "description")
+        vc.task = tasks[0]
         self.present(vc, animated: true)
         print(3)
     }

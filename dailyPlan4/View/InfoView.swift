@@ -77,9 +77,7 @@ private extension InfoView {
         view.addSubview(startDateLabel)
         view.addSubview(finishDateLabel)
         view.addSubview(descriptionLabel)
-        
-        //view.backgroundColor = .white
-        
+                
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(UIConstants.topInset)
             make.leading.trailing.equalToSuperview().inset(UIConstants.topInset)
