@@ -55,7 +55,6 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
 
     weak var delegate: TaskCellViewDelegate?
     
-    
     @objc func infoButtonPressed() {
         delegate?.infoButtonPressed()
     }

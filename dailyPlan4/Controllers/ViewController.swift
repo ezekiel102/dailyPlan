@@ -9,17 +9,16 @@ import UIKit
 import Then
 import SnapKit
 
-private var dateToday = Date()
-
 class ViewController: UIViewController, UITableViewDelegate, ViewControllerDelegate {
     
     func addTask(_ name: String, startDate: TimeInterval, finishDate: TimeInterval, _ description: String) {
         let task = Tasks(id: tasks.count + 1, dateStart: startDate, dateFinish: finishDate, name: name, description: description)
         tasks.append(task)
         print(tasks)
+        self.tableView.reloadData()
     }
     
-    var tasks: [Tasks] = [Tasks(id: 2, dateStart: 1705937101, dateFinish: 1705938452, name: "name", description: "description")]
+    var tasks: [Tasks] = [Tasks(id: 1, dateStart: 1706313700.0, dateFinish: 1706316199.0, name: "name", description: "description")]
      
     weak var delegate: ViewControllerDelegate?
     
@@ -31,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, ViewControllerDeleg
     
     private var tableView = UITableView()
     
-    private var items: [HourInterval] = Date().dayHours(from: dateToday)
+    private var items: [HourInterval] = Date().dayHours(from: Date())
     
     // MARK: - View lifecycle
     
@@ -56,7 +55,7 @@ private extension ViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        tableView.rowHeight = 150
+        tableView.rowHeight = 100
     }
     
     func makeLeftBarButtonItems() -> [UIBarButtonItem] {
@@ -69,7 +68,8 @@ private extension ViewController {
     }
     
     @objc private func dateSet() {
-        dateToday = datePicker.date
+        items = Date().dayHours(from: datePicker.date)
+        tableView.reloadData()
     }
     
     @objc private func addButtonPressed() {
@@ -77,7 +77,6 @@ private extension ViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "AddingViewController") as? AddingViewController
         vc?.delegate = self
         self.present(vc!, animated: true , completion: nil)
-        print(tasks)
     }
 }
 
@@ -91,9 +90,21 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HourCellView.self), for: indexPath) as! HourCellView
-        cell.configure(data: item, number: indexPath.row)
+        cell.configure(data: item, number: indexPath.row, tasks: filterTasks(item, tasks: tasks))
         cell.delegate = self
         return cell
+    }
+    
+    func filterTasks(_ item: HourInterval, tasks: [Tasks]) -> [Tasks] {
+        var tasksFiltered: [Tasks] = []
+        for task in tasks {
+            if task.dateStart >= item.startHour && task.dateStart <= item.endHour ||
+                task.dateFinish >= item.startHour && task.dateFinish <= item.endHour ||
+                task.dateStart <= item.startHour && task.dateFinish >= item.endHour {
+                tasksFiltered.append(task)
+            }
+        }
+        return tasksFiltered
     }
 }
 

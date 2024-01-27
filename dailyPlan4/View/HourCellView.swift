@@ -30,12 +30,13 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
     
     // MARK: - Public
 
-    func configure(data: HourInterval, number: Int) {
+    func configure(data: HourInterval, number: Int, tasks: [Tasks]) {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         let startH = formatter.string(from: Date(timeIntervalSince1970: data.startHour))
         let endH = formatter.string(from: Date(timeIntervalSince1970: data.endHour + 1))
         hour.text = "\(startH) - \(endH)"
+        itemsTask = tasks
     }
     
     // MARK: - Private properties
@@ -46,7 +47,7 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
     }
 
     
-    private var items = ViewController().tasks
+    private var itemsTask: [Tasks]?
     
     private var colour = UIColor.clear
  
@@ -57,8 +58,6 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
 
 private extension HourCellView {
     func initialize() {
-        print("hourcellview init")
-        print(ViewController().tasks)
         contentView.backgroundColor = colour
         contentView.addSubview(hour)
         hour.snp.makeConstraints { make in
@@ -87,11 +86,11 @@ private extension HourCellView {
 
 extension HourCellView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items.count
+        return itemsTask!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.row]
+        let item = itemsTask![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskCellView.self), for: indexPath) as! TaskCellView
         cell.configure(task: item)
         cell.delegate = self

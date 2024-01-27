@@ -11,12 +11,9 @@ extension Date {
     static var calendar: Calendar = {
         var calendar = Calendar(identifier: .gregorian)
         calendar.firstWeekday = 2
+        calendar.timeZone = TimeZone(identifier: "Europe/Moscow")!
         return calendar
     }()
-    
-    var currentTimestamp: TimeInterval {
-        return Date().timeIntervalSince1970.rounded()
-    }
     
     var year: Int? {
         return Date.calendar.dateComponents([.year], from: self).year
@@ -38,32 +35,16 @@ extension Date {
         return Date.calendar.dateComponents([.minute], from: self).minute
     }
     
-    func toTimestamp(year: Int, month: Int, day: Int, hour: Int, minutes: Int, seconds: Int) -> TimeInterval {
-        var date = DateComponents()
-        date.year = year
-        date.month = month
-        date.day = day
-        date.hour = hour
-        date.minute = minutes
-        date.second = seconds
-        date.timeZone = TimeZone(identifier: "Europe/Moscow")!
-        
-        let data = Date.calendar.date(from: date)!
-        return data.timeIntervalSince1970.rounded()
-    }
-    
-    func dayTo(to days: Int) -> [Date] {
-        var someDays: [Date] = []
-        for i in -days...days {
-            someDays.append(Date.calendar.date(byAdding: .day, value: i, to: self) ?? self)
-        }
-        return someDays
-    }
-    
-
-    func dayHours(from date: Date) -> [HourInterval] {
+    func dayHours(from data: Date) -> [HourInterval] {
         var hours: [HourInterval] = []
-        let dayBegin = date.toTimestamp(year: date.year!, month: date.month!, day: date.day!, hour: 0, minutes: 0, seconds: 0)
+        var date = DateComponents()
+        date.year = data.year
+        date.month = data.month
+        date.day = data.day
+        date.hour = 0
+        date.minute = 0
+        date.second = 0
+        let dayBegin = Date.calendar.date(from: date)!.timeIntervalSince1970.rounded()
         for i in 0...23 {
             let addHour = HourInterval(
                 startHour: dayBegin + 3600 * Double(i),

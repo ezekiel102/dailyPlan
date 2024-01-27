@@ -45,7 +45,12 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             } else {
                 descriptionTask = descriptionTaskField.text
             }
-            delegate?.addTask(nameTaskField.text!, startDate: startDateTask.currentTimestamp, finishDate: finishDateTask.currentTimestamp, descriptionTaskField.text!)
+            delegate?.addTask(nameTaskField.text!, startDate: startDateTask.timeIntervalSince1970, finishDate: finishDateTask.timeIntervalSince1970, descriptionTaskField.text!)
+            print("added task",
+                  nameTaskField.text!,
+                  startDateTask,
+                  finishDateTask,
+                  descriptionTaskField.text!)
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true)
