@@ -19,5 +19,10 @@ protocol HourCellViewDelegate: AnyObject {
 protocol ViewControllerDelegate: AnyObject {
     func infoButtonPressed(infoTask: Tasks)
     func addTask(_ name: String, startDate: TimeInterval, finishDate: TimeInterval, _ description: String)
-    var tasks: [Tasks] { get set }
+}
+
+protocol TasksRealmDelegate: AnyObject {
+    
+    
+    
 }

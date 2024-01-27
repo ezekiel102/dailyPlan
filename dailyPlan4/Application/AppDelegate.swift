@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = UINavigationController(rootViewController: viewController)
             self.window!.rootViewController = navigationController
             self.window!.makeKeyAndVisible()
+            
+            do {
+                _ = try Realm()
+            } catch {
+                print("Error initialising new realm \(error)")
+            }
+            
         }
 
         return true

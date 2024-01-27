@@ -69,21 +69,23 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
 private extension TaskCellView {
     func initialize() {
         contentView.addSubview(hours)
-        hours.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(5)
-            
-        }
         contentView.addSubview(nameTask)
+        contentView.addSubview(infoButton)
+        
+        infoButton.addTarget(self, action: #selector(infoButtonPressed), for: .allTouchEvents)
+        
+        infoButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(10)
+        }
         nameTask.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalTo(hours.snp.trailing).offset(10)
         }
-        infoButton.addTarget(self, action: #selector(infoButtonPressed), for: .allTouchEvents)
-        contentView.addSubview(infoButton)
-        infoButton.snp.makeConstraints { make in
+        hours.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().offset(5)
+            
         }
     }
 }

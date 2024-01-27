@@ -57,24 +57,26 @@ private extension HourCellView {
     func initialize() {
         contentView.backgroundColor = colour
         contentView.addSubview(hour)
-        hour.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(3)
-            make.leading.equalToSuperview().offset(10)
-        }
         contentView.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TaskCellView.self, forCellReuseIdentifier: String(describing: TaskCellView.self))
+//        tableView.isScrollEnabled = false
+        tableView.separatorColor = .clear
+        tableView.allowsSelection = false
+        tableView.rowHeight = 40
+        hour.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(3)
+            make.leading.equalToSuperview().offset(15)
+        }
         tableView.snp.makeConstraints { make in
             make.top.equalTo(hour.snp.bottom)
-            make.trailing.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().inset(15)
             make.bottom.equalToSuperview()
             make.leading.equalTo(hour.snp.trailing)
         }
-        tableView.rowHeight = 40
     }
     @objc func infoButtonPressed2() {
-
         print(2)
     }
 }
