@@ -109,10 +109,10 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: TaskCellViewDelegate {
-    func infoButtonPressed() {
+    func infoButtonPressed(infoTask: Tasks) {
         let vc = InfoView()
         vc.delegate = self
-        vc.task = tasks[0]
+        vc.task = infoTask
         self.present(vc, animated: true)
         print(3)
     }

@@ -14,9 +14,6 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
     
     weak var delegate: TaskCellViewDelegate?
     
-    weak var delegate2: ViewControllerDelegate?
-
-    
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -92,16 +89,15 @@ extension HourCellView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = itemsTask![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskCellView.self), for: indexPath) as! TaskCellView
-        cell.configure(task: item)
+        cell.configure(taskFrom: item)
         cell.delegate = self
         return cell
     }
 }
 
 extension HourCellView: TaskCellViewDelegate {
-    func infoButtonPressed() {
+    func infoButtonPressed(infoTask: Tasks) {
         print(2)
-        delegate?.infoButtonPressed()
-        
+        delegate?.infoButtonPressed(infoTask: infoTask)
     }
 }

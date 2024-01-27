@@ -9,15 +9,15 @@ import Foundation
 
 
 protocol TaskCellViewDelegate: AnyObject {
-    func infoButtonPressed()
+    func infoButtonPressed(infoTask: Tasks)
 }
 
 protocol HourCellViewDelegate: AnyObject {
-    func infoButtonPressed()
+    func infoButtonPressed(infoTask: Tasks)
 }
 
 protocol ViewControllerDelegate: AnyObject {
-    func infoButtonPressed()
+    func infoButtonPressed(infoTask: Tasks)
     func addTask(_ name: String, startDate: TimeInterval, finishDate: TimeInterval, _ description: String)
     var tasks: [Tasks] { get set }
 }

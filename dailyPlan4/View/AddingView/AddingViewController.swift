@@ -38,8 +38,8 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     }
     
     @IBAction func addTaskButtonPressed(_ sender: UIButton) {
-        if let name = nameTaskField.text {
-            nameTask = name
+        if nameTaskField.text != nil && nameTaskField.text != "" {
+            nameTask = nameTaskField.text!
             if descriptionTaskField.text == nil {
                 descriptionTask = ""
             } else {

@@ -25,13 +25,14 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
     
     // MARK: - Public
 
-    func configure(task: Tasks) {
+    func configure(taskFrom: Tasks) {
+        task = taskFrom
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        let startH = formatter.string(from: Date(timeIntervalSince1970: task.dateStart))
-        let endH = formatter.string(from: Date(timeIntervalSince1970: task.dateFinish))
+        let startH = formatter.string(from: Date(timeIntervalSince1970: taskFrom.dateStart))
+        let endH = formatter.string(from: Date(timeIntervalSince1970: taskFrom.dateFinish))
         hours.text = "\(startH) - \(endH)"
-        nameTask.text = "\(task.name)"
+        nameTask.text = "\(taskFrom.name)"
     }
     
     // MARK: - Private properties
@@ -47,6 +48,8 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
         $0.text = "coding"
     }
     
+    private var task: Tasks?
+    
     // MARK: - Public properties
 
     var infoButton = UIButton(type: .detailDisclosure).then {_ in
@@ -56,7 +59,7 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
     weak var delegate: TaskCellViewDelegate?
     
     @objc func infoButtonPressed() {
-        delegate?.infoButtonPressed()
+        delegate?.infoButtonPressed(infoTask: task!)
     }
     
 }
