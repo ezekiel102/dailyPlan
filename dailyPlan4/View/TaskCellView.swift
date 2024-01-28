@@ -45,7 +45,6 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
     private let nameTask = UILabel().then {
         $0.font = .systemFont(ofSize: 12)
         $0.textAlignment = .center
-        $0.text = "coding"
     }
     
     private var task: Tasks?
@@ -53,7 +52,7 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
     // MARK: - Public properties
 
     var infoButton = UIButton(type: .detailDisclosure).then {_ in
-//        $0.tintColor = .black
+
     }
 
     weak var delegate: TaskCellViewDelegate?

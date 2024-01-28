@@ -9,7 +9,7 @@ import UIKit
 
 class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
-    weak var delegate: ViewControllerDelegate?
+    weak var delegateViewController: ViewControllerDelegate?
     
     // MARK: - Private properties
     
@@ -38,19 +38,17 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     }
     
     @IBAction func addTaskButtonPressed(_ sender: UIButton) {
-        if nameTaskField.text != nil && nameTaskField.text != "" {
+        print(finishDateTask)
+        print(startDateTask)
+        if (nameTaskField.text != nil) && (nameTaskField.text != "") && (finishDateTask >= startDateTask) {
+            print(1)
             nameTask = nameTaskField.text!
             if descriptionTaskField.text == nil {
                 descriptionTask = ""
             } else {
                 descriptionTask = descriptionTaskField.text
             }
-            delegate?.addTask(nameTaskField.text!, startDate: startDateTask.timeIntervalSince1970, finishDate: finishDateTask.timeIntervalSince1970, descriptionTaskField.text!)
-            print("added task",
-                  nameTaskField.text!,
-                  startDateTask,
-                  finishDateTask,
-                  descriptionTaskField.text!)
+            delegateViewController?.addTask(nameTaskField.text!, startDate: startDateTask.timeIntervalSince1970, finishDate: finishDateTask.timeIntervalSince1970, descriptionTaskField.text!)
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true)

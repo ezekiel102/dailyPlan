@@ -21,8 +21,3 @@ protocol ViewControllerDelegate: AnyObject {
     func addTask(_ name: String, startDate: TimeInterval, finishDate: TimeInterval, _ description: String)
 }
 
-protocol TasksRealmDelegate: AnyObject {
-    
-    
-    
-}

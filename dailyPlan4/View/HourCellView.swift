@@ -42,9 +42,8 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
         $0.font = .systemFont(ofSize: 12)
         $0.textAlignment = .center
     }
-
     
-    private var itemsTask: [Tasks]?
+    private var itemsTask: [Tasks] = []
     
     private var colour = UIColor.clear
  
@@ -55,22 +54,24 @@ class HourCellView: UITableViewCell, UITableViewDelegate {
 
 private extension HourCellView {
     func initialize() {
+        tableView.register(TaskCellView.self, forCellReuseIdentifier: String(describing: TaskCellView.self))
         contentView.backgroundColor = colour
         contentView.addSubview(hour)
         contentView.addSubview(tableView)
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(TaskCellView.self, forCellReuseIdentifier: String(describing: TaskCellView.self))
-//        tableView.isScrollEnabled = false
+        tableView.isScrollEnabled = false
         tableView.separatorColor = .clear
         tableView.allowsSelection = false
-        tableView.rowHeight = 40
+        
+        tableView.rowHeight = 30
         hour.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(3)
             make.leading.equalToSuperview().offset(15)
         }
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(hour.snp.bottom)
+            make.top.equalToSuperview().offset(3)
             make.trailing.equalToSuperview().inset(15)
             make.bottom.equalToSuperview()
             make.leading.equalTo(hour.snp.trailing)
@@ -85,16 +86,17 @@ private extension HourCellView {
 
 extension HourCellView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsTask!.count
+        return itemsTask.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = itemsTask![indexPath.row]
+        let item = itemsTask[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskCellView.self), for: indexPath) as! TaskCellView
         cell.configure(taskFrom: item)
         cell.delegate = self
         return cell
     }
+
 }
 
 extension HourCellView: TaskCellViewDelegate {

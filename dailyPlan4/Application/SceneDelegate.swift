@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -19,6 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController(rootViewController: viewController)
         self.window!.rootViewController = navigationController
         self.window!.makeKeyAndVisible()
+        do {
+            _ = try Realm()
+        } catch {
+            print("Error initialising new realm \(error)")
+        }
     }
     
 }

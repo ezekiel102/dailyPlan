@@ -14,11 +14,11 @@ struct Tasks: Codable {
     let name: String
     let description: String
     
-    init(id: Int, dateStart: TimeInterval, dateFinish: TimeInterval, name: String, description: String) {
-        self.id = id
-        self.dateStart = dateStart
-        self.dateFinish = dateFinish
-        self.name = name
-        self.description = description
+    init(taskFromRealm: TasksRealm) {
+        self.id = taskFromRealm.id
+        self.dateStart = taskFromRealm.dateStart
+        self.dateFinish = taskFromRealm.dateFinish
+        self.name = taskFromRealm.name
+        self.description = taskFromRealm.taskDescription
     }
 }

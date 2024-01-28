@@ -33,8 +33,8 @@ class InfoView: UIViewController {
     
     private enum UIConstants {
         static let topInset: CGFloat = 30
-        static let leadingInset: CGFloat = 5
-        static let trailingInset: CGFloat = 5
+        static let leadingInset: CGFloat = 35
+        static let textViewInset: CGFloat = 30
         static let bottomInset: CGFloat = 30
         static let height: CGFloat = 30
         static let fontSize: CGFloat = 17
@@ -80,22 +80,22 @@ private extension InfoView {
                 
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(UIConstants.topInset)
-            make.leading.trailing.equalToSuperview().inset(UIConstants.topInset)
+            make.leading.trailing.equalToSuperview().inset(UIConstants.leadingInset)
             make.height.equalTo(UIConstants.height)
         }
         startDateLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(UIConstants.topInset)
-            make.leading.trailing.equalToSuperview().inset(UIConstants.topInset)
+            make.leading.trailing.equalToSuperview().inset(UIConstants.leadingInset)
             make.height.equalTo(UIConstants.height)
         }
         finishDateLabel.snp.makeConstraints { make in
             make.top.equalTo(startDateLabel.snp.bottom).offset(UIConstants.topInset)
-            make.leading.trailing.equalToSuperview().inset(UIConstants.topInset)
+            make.leading.trailing.equalToSuperview().inset(UIConstants.leadingInset)
             make.height.equalTo(UIConstants.height)
         }
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(finishDateLabel.snp.bottom).offset(UIConstants.topInset)
-            make.leading.trailing.equalToSuperview().inset(UIConstants.topInset)
+            make.leading.trailing.equalToSuperview().inset(UIConstants.textViewInset)
             make.bottom.equalToSuperview().inset(UIConstants.bottomInset)
         }
     }
