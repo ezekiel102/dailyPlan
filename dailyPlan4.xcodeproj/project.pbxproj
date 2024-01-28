@@ -10,7 +10,6 @@
 		0A36E6092B603C05001064B9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A36E6082B603C05001064B9 /* Protocols.swift */; };
 		0A36E60D2B62622B001064B9 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A36E60C2B62622B001064B9 /* InfoView.swift */; };
 		0A36E60F2B654E86001064B9 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A36E60E2B654E86001064B9 /* RealmData.swift */; };
-		0A5709502B5CF682003EB2BA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A57094F2B5CF682003EB2BA /* SnapKit */; };
 		0A5709582B5CFA8A003EB2BA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5709572B5CFA8A003EB2BA /* DateExtensions.swift */; };
 		0A57095C2B5D58D5003EB2BA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A57095B2B5D58D5003EB2BA /* Data.swift */; };
 		0A5709642B5D6C78003EB2BA /* AddingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A5709632B5D6C78003EB2BA /* AddingViewController.storyboard */; };
@@ -26,7 +25,8 @@
 		0AB042482B5CEEEF00E0D419 /* dailyPlan4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB042472B5CEEEF00E0D419 /* dailyPlan4UITests.swift */; };
 		0AB0424A2B5CEEEF00E0D419 /* dailyPlan4UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB042492B5CEEEF00E0D419 /* dailyPlan4UITestsLaunchTests.swift */; };
 		0AB0425E2B5CF34200E0D419 /* HourCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0425D2B5CF34200E0D419 /* HourCellView.swift */; };
-		0AB042612B5CF51B00E0D419 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 0AB042602B5CF51B00E0D419 /* Then */; };
+		0AEAE0262B66A0A20078D78B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAE0252B66A0A20078D78B /* SnapKit */; };
+		0AEAE0292B66A0AC0078D78B /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAE0282B66A0AC0078D78B /* Then */; };
 		203E8EC4C3A9E0629ECEE929 /* Pods_dailyPlan4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42371AA8E7C6CCE04FF2107C /* Pods_dailyPlan4.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,9 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB042612B5CF51B00E0D419 /* Then in Frameworks */,
-				0A5709502B5CF682003EB2BA /* SnapKit in Frameworks */,
 				203E8EC4C3A9E0629ECEE929 /* Pods_dailyPlan4.framework in Frameworks */,
+				0AEAE0292B66A0AC0078D78B /* Then in Frameworks */,
+				0AEAE0262B66A0A20078D78B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +257,8 @@
 			);
 			name = dailyPlan4;
 			packageProductDependencies = (
-				0AB042602B5CF51B00E0D419 /* Then */,
-				0A57094F2B5CF682003EB2BA /* SnapKit */,
+				0AEAE0252B66A0A20078D78B /* SnapKit */,
+				0AEAE0282B66A0AC0078D78B /* Then */,
 			);
 			productName = dailyPlan4;
 			productReference = 0AB042232B5CEEEE00E0D419 /* dailyPlan4.app */;
@@ -333,8 +333,8 @@
 			);
 			mainGroup = 0AB0421A2B5CEEEE00E0D419;
 			packageReferences = (
-				0AB0425F2B5CF51B00E0D419 /* XCRemoteSwiftPackageReference "Then" */,
-				0A57094E2B5CF682003EB2BA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0AEAE0242B66A0A20078D78B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0AEAE0272B66A0AC0078D78B /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 0AB042242B5CEEEE00E0D419 /* Products */;
 			projectDirPath = "";
@@ -483,6 +483,7 @@
 		0AB0424B2B5CEEEF00E0D419 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -543,6 +544,7 @@
 		0AB0424C2B5CEEEF00E0D419 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -576,6 +578,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=*]" = "armv7, armv7s, arm64, arm64e, x86_64";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -587,6 +590,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -635,6 +639,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93R5WN7FC4;
+				"EXCLUDED_ARCHS[sdk=*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dailyPlan4/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -776,7 +781,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A57094E2B5CF682003EB2BA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		0AEAE0242B66A0A20078D78B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -784,7 +789,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		0AB0425F2B5CF51B00E0D419 /* XCRemoteSwiftPackageReference "Then" */ = {
+		0AEAE0272B66A0AC0078D78B /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then.git";
 			requirement = {
@@ -795,14 +800,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0A57094F2B5CF682003EB2BA /* SnapKit */ = {
+		0AEAE0252B66A0A20078D78B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A57094E2B5CF682003EB2BA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 0AEAE0242B66A0A20078D78B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		0AB042602B5CF51B00E0D419 /* Then */ = {
+		0AEAE0282B66A0AC0078D78B /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0AB0425F2B5CF51B00E0D419 /* XCRemoteSwiftPackageReference "Then" */;
+			package = 0AEAE0272B66A0AC0078D78B /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */

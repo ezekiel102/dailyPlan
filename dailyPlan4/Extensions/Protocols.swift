@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol TaskCellViewDelegate: AnyObject {
     func infoButtonPressed(infoTask: Tasks)
 }
@@ -20,4 +19,3 @@ protocol ViewControllerDelegate: AnyObject {
     func infoButtonPressed(infoTask: Tasks)
     func addTask(_ name: String, startDate: TimeInterval, finishDate: TimeInterval, _ description: String)
 }
-

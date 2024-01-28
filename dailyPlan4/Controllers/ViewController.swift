@@ -6,35 +6,34 @@
 //
 
 import UIKit
-import Then
 import SnapKit
 import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, ViewControllerDelegate {
-    
-    //MARK: - Delegate properties and functions
-    
+
+    // MARK: - Delegate properties and functions
+
     func addTask(_ name: String, startDate: TimeInterval, finishDate: TimeInterval, _ description: String) {
         viewModel.addToViewModel(name, startDate: startDate, finishDate: finishDate, description)
         updateData()
     }
-    
+
     // MARK: - Private properties
-        
+
     private let viewModel = ViewModel()
-    
+
     private var addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-    
+
     private let datePicker = UIDatePicker()
-    
+
     private var tableView = UITableView()
-    
+
     private var hours: [HourInterval] = Date().dayHours(from: Date())
-    
+
     private var taskForDay: [Tasks]?
-    
+
     // MARK: - View lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -59,7 +58,7 @@ private extension ViewController {
             make.edges.equalToSuperview()
         }
     }
-    
+
     func makeLeftBarButtonItems() -> [UIBarButtonItem] {
         datePicker.datePickerMode = .date
         datePicker.locale = .current
@@ -68,23 +67,25 @@ private extension ViewController {
         datePicker.addTarget(self, action: #selector(self.dateSet), for: .valueChanged)
         return [dateBarButtonItem]
     }
-    
+
     func updateData() {
         taskForDay = viewModel.taskForDay(dayStart: hours[0].startHour,
                                           dayEnd: hours[23].endHour)
         self.tableView.reloadData()
     }
-    
+
     @objc private func dateSet() {
         hours = Date().dayHours(from: datePicker.date)
         updateData()
     }
-    
+
     @objc private func addButtonPressed() {
         let storyboard = UIStoryboard(name: "AddingViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddingViewController") as? AddingViewController
+        let vc = storyboard.instantiateViewController(
+            withIdentifier: "AddingViewController"
+        ) as? AddingViewController
         vc?.delegateViewController = self
-        self.present(vc!, animated: true , completion: nil)
+        self.present(vc!, animated: true, completion: nil)
     }
 }
 
@@ -94,10 +95,12 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hours.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = hours[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HourCellView.self), for: indexPath) as! HourCellView
+        let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                    String(describing: HourCellView.self),
+                                                 for: indexPath) as! HourCellView
         if taskForDay == nil {
             cell.configure(data: item, number: indexPath.row, tasks: [])
         } else {
@@ -107,7 +110,7 @@ extension ViewController: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
-    
+
     func filteredTasks(_ item: HourInterval, tasks: [Tasks]) -> [Tasks] {
         var tasksFiltered: [Tasks] = []
         for task in tasks {
@@ -119,17 +122,16 @@ extension ViewController: UITableViewDataSource {
         }
         return tasksFiltered
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = hours[indexPath.row]
         let taskFiltered = filteredTasks(item, tasks: taskForDay!)
-        if taskFiltered.count <= 1  {
+        if taskFiltered.count <= 1 {
             return 40
         } else {
             return CGFloat(40 + taskFiltered.count * 30 - 20)
         }
     }
-    
 }
 
 extension ViewController: TaskCellViewDelegate {
@@ -141,4 +143,3 @@ extension ViewController: TaskCellViewDelegate {
         print(3)
     }
 }
-

@@ -8,16 +8,16 @@
 import UIKit
 
 class InfoView: UIViewController {
-    
+
     weak var delegate: ViewControllerDelegate?
-    
+
     // MARK: - View lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
     }
-    
+
     var task: Tasks? {
         didSet {
             let formatter = DateFormatter()
@@ -28,9 +28,9 @@ class InfoView: UIViewController {
             descriptionLabel.text = task?.description
         }
     }
-    
+
     // MARK: - Private constants
-    
+
     private enum UIConstants {
         static let topInset: CGFloat = 30
         static let leadingInset: CGFloat = 35
@@ -39,24 +39,24 @@ class InfoView: UIViewController {
         static let height: CGFloat = 30
         static let fontSize: CGFloat = 17
     }
-    
+
     // MARK: - Private properties
 
     private let nameLabel = UILabel().then {
         $0.font = .systemFont(ofSize: UIConstants.fontSize)
         $0.textAlignment = .left
     }
-    
+
     private let startDateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: UIConstants.fontSize)
         $0.textAlignment = .left
     }
-    
+
     private let finishDateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: UIConstants.fontSize)
         $0.textAlignment = .left
     }
-    
+
     private let descriptionLabel = UITextView().then {
         $0.font = .systemFont(ofSize: UIConstants.fontSize)
         $0.textAlignment = .left
@@ -77,7 +77,7 @@ private extension InfoView {
         view.addSubview(startDateLabel)
         view.addSubview(finishDateLabel)
         view.addSubview(descriptionLabel)
-                
+
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(UIConstants.topInset)
             make.leading.trailing.equalToSuperview().inset(UIConstants.leadingInset)

@@ -8,35 +8,34 @@
 import UIKit
 
 class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-    
+
     weak var delegateViewController: ViewControllerDelegate?
-    
+
     // MARK: - Private properties
-    
+
     private var nameTask: String = String()
-    
+
     private var startDateTask: Date = Date()
-    
+
     private var finishDateTask: Date = Date()
-    
+
     private var descriptionTask: String = String()
-    
+
     // MARK: - Public properties
-    
+
     @IBOutlet weak var nameTaskField: UITextField!
-    
+
     @IBOutlet weak var startTaskPicker: UIDatePicker!
-    
+
     @IBOutlet weak var finishTaskPicker: UIDatePicker!
-    
+
     @IBOutlet weak var descriptionTaskField: UITextView!
-    
+
     // MARK: - View lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     @IBAction func addTaskButtonPressed(_ sender: UIButton) {
         print(finishDateTask)
         print(startDateTask)
@@ -48,27 +47,29 @@ class AddingViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             } else {
                 descriptionTask = descriptionTaskField.text
             }
-            delegateViewController?.addTask(nameTaskField.text!, startDate: startDateTask.timeIntervalSince1970, finishDate: finishDateTask.timeIntervalSince1970, descriptionTaskField.text!)
+            delegateViewController?.addTask(nameTaskField.text!,
+                                            startDate: startDateTask.timeIntervalSince1970,
+                                            finishDate: finishDateTask.timeIntervalSince1970,
+                                            descriptionTaskField.text!)
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true)
         }
     }
-    
+
     // MARK: - Public functions
-    
+
     @IBAction func didEndStartTask(_ sender: UIDatePicker) {
         startDateTask = startTaskPicker.date
     }
-    
+
     @IBAction func didEndFinishTask(_ sender: UIDatePicker) {
         finishDateTask = finishTaskPicker.date
     }
-    
+
     func textViewDidBeginEditing(_ textView: UITextView) {
         if descriptionTaskField.text == "Описание задачи" {
             descriptionTaskField.text = nil
         }
     }
-    
 }

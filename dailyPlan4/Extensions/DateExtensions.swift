@@ -14,27 +14,21 @@ extension Date {
         calendar.timeZone = TimeZone(identifier: "Europe/Moscow")!
         return calendar
     }()
-    
     var year: Int? {
         return Date.calendar.dateComponents([.year], from: self).year
     }
-    
-    var month: Int?  {
+    var month: Int? {
         return Date.calendar.dateComponents([.month], from: self).month
     }
-    
-    var day: Int?  {
+    var day: Int? {
         return Date.calendar.dateComponents([.day], from: self).day
     }
-    
-    var hour: Int?  {
+    var hour: Int? {
         return Date.calendar.dateComponents([.hour], from: self).hour
     }
-    
-    var minute: Int?  {
+    var minute: Int? {
         return Date.calendar.dateComponents([.minute], from: self).minute
     }
-    
     func dayHours(from data: Date) -> [HourInterval] {
         var hours: [HourInterval] = []
         var date = DateComponents()
@@ -54,7 +48,6 @@ extension Date {
         }
         return hours
     }
-   
 }
 
 struct HourInterval {

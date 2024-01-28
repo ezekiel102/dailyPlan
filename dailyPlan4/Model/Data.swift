@@ -13,7 +13,7 @@ struct Tasks: Codable {
     let dateFinish: TimeInterval
     let name: String
     let description: String
-    
+
     init(taskFromRealm: TasksRealm) {
         self.id = taskFromRealm.id
         self.dateStart = taskFromRealm.dateStart
