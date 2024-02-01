@@ -50,7 +50,6 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
     // MARK: - Public properties
 
     var infoButton = UIButton(type: .detailDisclosure).then {_ in
-
     }
 
     weak var delegate: TaskCellViewDelegate?
