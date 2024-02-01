@@ -63,7 +63,6 @@ private extension ViewController {
         datePicker.datePickerMode = .date
         datePicker.locale = .current
         datePicker.timeZone = .current
-        datePicker.tintColor = .red
         let dateBarButtonItem = UIBarButtonItem(customView: datePicker)
         datePicker.addTarget(self, action: #selector(self.dateSet), for: .valueChanged)
         return [dateBarButtonItem]
