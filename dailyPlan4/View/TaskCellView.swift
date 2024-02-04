@@ -50,7 +50,7 @@ class TaskCellView: UITableViewCell, UITableViewDelegate {
     // MARK: - Public properties
 
     var infoButton = UIButton(type: .detailDisclosure).then {
-        $0.tintColor = .red
+        $0.tintColor = .blue
     }
 
     weak var delegate: TaskCellViewDelegate?
